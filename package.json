@@ -20,7 +20,7 @@
     "lib": "lib"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": "4.4"
   },
   "devDependencies": {
     "cli-color": "0.2.2",
