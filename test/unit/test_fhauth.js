@@ -58,9 +58,9 @@ exports.it_shoudld_test_auth_failure = function (finish) {
     }
   };
 
-  var err = {
-    next: function () {
-      return err;
+  var error = {
+    body: {
+      "message": "error occured"
     }
   };
 
@@ -68,11 +68,11 @@ exports.it_shoudld_test_auth_failure = function (finish) {
   var performAuth = fhauth.__get__("performAuth");
   var authCall = performAuth(opts);
   mockAPI.auth.performAuth = function (req, localAuth, cb) {
-    return cb(null, err);
+    return cb(error);
   };
 
   authCall(req, res, function (err, resp) {
-    assert.ok(err);
+    assert.equal(err, error);
     return finish();
   });
 };
